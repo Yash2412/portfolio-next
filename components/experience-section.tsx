@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Briefcase, Code, Package, Server, Workflow } from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase, Code, Package, Server, Workflow } from "lucide-react";
 
 // Experience data with more details and icons
 const experiences = [
@@ -12,7 +12,7 @@ const experiences = [
     title: "Project Lead",
     company: "314e Corporation",
     location: "Bangalore",
-    period: "January 2022 - Present",
+    period: "January 2025 - Present",
     description:
       "Leading a new project, overseeing frontend, backend (Rust), database architecture, and Kubernetes deployments.",
     responsibilities: [
@@ -28,7 +28,7 @@ const experiences = [
     title: "Frontend Lead",
     company: "314e Corporation",
     location: "Bangalore",
-    period: "December 2023 - December 2024",
+    period: "Dec 2023 - Dec 2024",
     description:
       "Led the frontend team in developing and optimizing web and mobile app journeys across 2 SaaS products.",
     responsibilities: [
@@ -40,7 +40,14 @@ const experiences = [
       "Contributed to open-source tools including Apache Superset and OHIF DICOM Viewer",
       "Conducted peer code reviews and mentored engineers",
     ],
-    skills: ["React.js", "React Native", "TypeScript", "Micro Frontends", "TurboRepo", "Performance Optimization"],
+    skills: [
+      "React.js",
+      "React Native",
+      "TypeScript",
+      "Micro Frontends",
+      "TurboRepo",
+      "Performance Optimization",
+    ],
     icon: <Code className="h-6 w-6" />,
   },
   {
@@ -56,13 +63,20 @@ const experiences = [
       "Wrote over 200 end-to-end test cases using Playwright and unit tests with Vitest/Jest",
       "Participated in agile ceremonies and contributed to product roadmap discussions",
     ],
-    skills: ["React.js", "TypeScript", "Redux", "Zustand", "React Query", "Testing"],
+    skills: [
+      "React.js",
+      "TypeScript",
+      "Redux",
+      "Zustand",
+      "React Query",
+      "Testing",
+    ],
     icon: <Package className="h-6 w-6" />,
   },
-]
+];
 
 export default function ExperienceSection() {
-  const [activeExperience, setActiveExperience] = useState(0)
+  const [activeExperience, setActiveExperience] = useState(0);
 
   return (
     <section id="experience" className="py-20 bg-secondary/30">
@@ -78,12 +92,16 @@ export default function ExperienceSection() {
                   key={index}
                   onClick={() => setActiveExperience(index)}
                   className={`w-full text-left p-4 rounded-lg transition-all duration-300 flex items-center gap-3 ${
-                    activeExperience === index ? "bg-primary text-primary-foreground" : "hover:bg-secondary"
+                    activeExperience === index
+                      ? "bg-primary text-primary-foreground"
+                      : "hover:bg-secondary"
                   }`}
                 >
                   <div
                     className={`p-2 rounded-full ${
-                      activeExperience === index ? "bg-primary-foreground/20" : "bg-primary/10"
+                      activeExperience === index
+                        ? "bg-primary-foreground/20"
+                        : "bg-primary/10"
                     }`}
                   >
                     {exp.icon}
@@ -92,7 +110,9 @@ export default function ExperienceSection() {
                     <h3 className="font-medium">{exp.title}</h3>
                     <p
                       className={`text-sm ${
-                        activeExperience === index ? "text-primary-foreground/80" : "text-muted-foreground"
+                        activeExperience === index
+                          ? "text-primary-foreground/80"
+                          : "text-muted-foreground"
                       }`}
                     >
                       {exp.company} • {exp.period}
@@ -110,34 +130,41 @@ export default function ExperienceSection() {
               <CardContent className="p-6">
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-2xl font-bold">{experiences[activeExperience].title}</h3>
+                    <h3 className="text-2xl font-bold">
+                      {experiences[activeExperience].title}
+                    </h3>
                     <Badge variant="outline" className="text-xs">
                       {experiences[activeExperience].period}
                     </Badge>
                   </div>
                   <p className="text-primary font-medium">
-                    {experiences[activeExperience].company}, {experiences[activeExperience].location}
+                    {experiences[activeExperience].company},{" "}
+                    {experiences[activeExperience].location}
                   </p>
                 </div>
 
-                <p className="mb-6 text-lg">{experiences[activeExperience].description}</p>
+                <p className="mb-6 text-lg">
+                  {experiences[activeExperience].description}
+                </p>
 
                 <div className="mb-6">
                   <h4 className="font-semibold mb-3 text-lg flex items-center gap-2">
                     <Briefcase className="h-4 w-4" /> Key Responsibilities
                   </h4>
                   <ul className="space-y-2 pl-6 list-disc">
-                    {experiences[activeExperience].responsibilities.map((resp, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: idx * 0.1 }}
-                        className="text-muted-foreground"
-                      >
-                        {resp}
-                      </motion.li>
-                    ))}
+                    {experiences[activeExperience].responsibilities.map(
+                      (resp, idx) => (
+                        <motion.li
+                          key={idx}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: idx * 0.1 }}
+                          className="text-muted-foreground"
+                        >
+                          {resp}
+                        </motion.li>
+                      )
+                    )}
                   </ul>
                 </div>
 
@@ -166,6 +193,5 @@ export default function ExperienceSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
